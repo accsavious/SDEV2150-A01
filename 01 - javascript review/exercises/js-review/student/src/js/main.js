@@ -7,13 +7,13 @@
 // These IDs should already exist in index.html.
 
 // TODO: Select the main todo list container
-
+const toDo = document.querySelector('#todo-list');
 // TODO: Select the output area for text and messages
-
+const output = document.querySelector('#output');
 // TODO: Select the Run Demo button
-
+const demoButton = document.querySelector('#btn-run');
 // TODO: Select the Clear button
-
+const clearButton = document.querySelector('#btn-clear');
 // --------------------------------------------------
 // STEP 2: Variables and template strings
 // --------------------------------------------------
@@ -21,11 +21,15 @@
 // them using a template string.
 
 // TODO: Create a constant named course
-
+const course = 'SDEV2150';
 // TODO: Create a variable named topic
-
+let topic = 'JS Review';
 // TODO: Use a template string to display both values
+let combined = `<p>My course "${course}, the topic ${topic}</p>`;
+console.log(output)
 
+output.innerHTML = combined
+output.innerHTML += `<p>This was added using +=</p>`
 // --------------------------------------------------
 // STEP 3: Functions and return values
 // --------------------------------------------------
@@ -33,9 +37,11 @@
 // another function that formats a label/value pair.
 
 // TODO: Create a function add(a, b)
-
+function formatResult(label, value) {
+    return `${label}: ${value}`;
+}
 // TODO: Create an arrow function formatResult(label, value)
-
+output.innerHTML += `<p>${formatResult('2+3', 2 + 3)}</p>`
 // TODO: Call the functions and display the result
 
 // --------------------------------------------------
@@ -46,9 +52,19 @@
 
 // TODO: Create an array named tasks
 // Each task should have: title (string), done (boolean)
+const tasks = [
+    { title: 'install dependencies', done: true},
+    { title: 'Run dev server', done: true },
+    { title: 'Complete the review demo', done: false},
+    { title: 'eat sammich', done: false},
+]
 
 // TODO: Use a loop to count completed tasks
-
+let completedCount = 0;
+for (const task of tasks) {
+    if (task.done) completedCount++;
+}
+console.log(`Number of completed tasks: ${completedCount}`)
 // TODO: Display: "Completed: X of Y"
 
 // --------------------------------------------------
@@ -61,10 +77,22 @@
 // - Start with '<ul>'
 // - Loop over items
 // - Add <li> elements with a class of 'done' or 'todo'
+const todoList = document.querySelector('#todo-list')
 // - Close the list and return the string
+function renderTaskList(items) {
+    let html = '<ul>';
+    for (const item of items) {
+        const status = item.done ? "done" : "todo";
+        // ternary in js
+        // take a bool condition. if its true, first option, false, second option
+        html += `<li class="${status}">${item.title}</li>`;
+    };
+    html += '</ul>';
+    return html;
+}
 
 // TODO: Render the task list inside the list container
-
+todoList.innerHTML += renderTaskList(tasks);
 // --------------------------------------------------
 // STEP 6: DOM manipulation with createElement
 // --------------------------------------------------
@@ -74,9 +102,15 @@
 // - Create a <p> element
 // - Set its textContent
 // - Append it to the output element
-
+function addMessage(message) {
+    const p = document.createElement('p');
+    p.textConent = message;
+    output.appendChild(p)
+}
 // TODO: Test the addMessage function
+let someText = "hi"
 
+addMessage(someText)
 // --------------------------------------------------
 // STEP 7: Events – connect UI to behavior
 // --------------------------------------------------
@@ -86,12 +120,23 @@
 // - Clear output
 // - Add a few messages
 // - Render the task list
+function runDemo() {
+    output.innerHTML = "";
+    addMessage("Running demo...")
+    addMessage(formatResult("5 + 8"), 5 + 8);
+
+}
 
 // TODO: Create a function clearUI()
 // - Clear both output and todo list containers
+function clearTimeout() {
+    output.innerHTML = "";
+    todoList.innerHTML = ";"
+}
 
 // TODO: Add click listeners for btnRun and btnClear
-
+demoButton.addEventListener('click', runDemo)
+clearButton.addEventListener('click', clearTimeout)
 // --------------------------------------------------
 // STEP 8: Mini extension – Adding tasks
 // --------------------------------------------------
