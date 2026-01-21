@@ -7,6 +7,7 @@
 // These IDs should already exist in index.html.
 
 // TODO: Select the main todo list container
+<<<<<<< HEAD
 const toDo = document.querySelector('#todo-list');
 // TODO: Select the output area for text and messages
 const output = document.querySelector('#output');
@@ -14,6 +15,15 @@ const output = document.querySelector('#output');
 const demoButton = document.querySelector('#btn-run');
 // TODO: Select the Clear button
 const clearButton = document.querySelector('#btn-clear');
+=======
+const todoList = document.querySelector("#todo-list")
+// TODO: Select the output area for text and messages
+const output = document.querySelector("#output")
+// TODO: Select the Run Demo button
+const btnRun = document.querySelector("#btn-run")
+// TODO: Select the Clear button
+const btnClear = document.querySelector("#btn-clear")
+>>>>>>> ad4ca7a3025ac5333952a579c879311e2cbcfe23
 // --------------------------------------------------
 // STEP 2: Variables and template strings
 // --------------------------------------------------
@@ -21,6 +31,7 @@ const clearButton = document.querySelector('#btn-clear');
 // them using a template string.
 
 // TODO: Create a constant named course
+<<<<<<< HEAD
 const course = 'SDEV2150';
 // TODO: Create a variable named topic
 let topic = 'JS Review';
@@ -30,6 +41,13 @@ console.log(output)
 
 output.innerHTML = combined
 output.innerHTML += `<p>This was added using +=</p>`
+=======
+const course = "SDEV101"
+// TODO: Create a variable named topic
+let topic = "functions"
+// TODO: Use a template string to display both values
+let template = `${course}: ${topic}`
+>>>>>>> ad4ca7a3025ac5333952a579c879311e2cbcfe23
 // --------------------------------------------------
 // STEP 3: Functions and return values
 // --------------------------------------------------
