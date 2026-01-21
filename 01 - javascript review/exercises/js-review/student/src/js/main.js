@@ -83,11 +83,12 @@ function renderTaskList(items) {
     let html = '<ul>';
     for (const item of items) {
         const status = item.done ? "done" : "todo";
+        const checked = item.done ? "&#10003" : "&#10006";
         // ternary in js
         // take a bool condition. if its true, first option, false, second option
-        html += `<li class="${status}">${item.title}</li>`;
+        html += `<li class="${status}">${item.title} ${checked}</li>`;
     };
-    html += '</ul>';
+    html += '</ul>'
     return html;
 }
 
@@ -103,12 +104,14 @@ todoList.innerHTML += renderTaskList(tasks);
 // - Set its textContent
 // - Append it to the output element
 function addMessage(message) {
+    console.log(`message added: ${message}`);
     const p = document.createElement('p');
-    p.textConent = message;
-    output.appendChild(p)
+    p.textContent = message
+    console.log(p.textContent);
+    output.appendChild(p);
 }
 // TODO: Test the addMessage function
-let someText = "hi"
+let someText = "hi";
 
 addMessage(someText)
 // --------------------------------------------------
@@ -124,14 +127,13 @@ function runDemo() {
     output.innerHTML = "";
     addMessage("Running demo...")
     addMessage(formatResult("5 + 8"), 5 + 8);
-
 }
 
 // TODO: Create a function clearUI()
 // - Clear both output and todo list containers
 function clearTimeout() {
     output.innerHTML = "";
-    todoList.innerHTML = ";"
+    todoList.innerHTML = "";
 }
 
 // TODO: Add click listeners for btnRun and btnClear
@@ -140,7 +142,31 @@ clearButton.addEventListener('click', clearTimeout)
 // --------------------------------------------------
 // STEP 8: Mini extension – Adding tasks
 // --------------------------------------------------
+const btnAdd = document.querySelector('#btn-add')
+const txtTask = document.getElementById('txt-task');
 
+// function addTodo(event) {
+//     let el = event.target
+//     let input = el.previousElementSibling.value
+//     if (todoList.innerHTML === "") {
+//         let ul = document.createElement('ul')
+//         todoList.appendChild(ul)
+//     }
+//     let content = document.createElement('li')
+//     content.classList.add("todo")
+//     content.textContent = input
+//     todoList.firstElementChild.appendChild(content)
+//     txtTask.value = '';
+// }
+
+btnAdd.addEventListener('click', () => {
+  const title = txtTask.value.trim();
+  if (!title) return;
+
+  tasks.push({ title, done: false });
+  todoList.innerHTML = renderTaskList(tasks);
+  txtTask.value = '';
+});
 // --------------------------------------------------
 // STEP 9: Student Exercise
 // --------------------------------------------------
@@ -149,17 +175,33 @@ clearButton.addEventListener('click', clearTimeout)
 // 1. Create a function toggleDone(title)
 //    - Find a task by title
 //    - Flip its done value (true/false)
-
+function toggleDone(title) {
+    for (const task of tasks) {
+        if (task.title === title) {
+            task.done = !task.done;
+        }
+    }
+}
 // 2. Update renderTaskList() to show '(done)' or '(todo)'
 
 // 3. Add event delegation to the <ul>
 //    - When a list item is clicked:
 //      * Toggle the task
 //      * Re-render the list
+todoList.addEventListener('click', (event) => {
+    let el = event.target
+    if (el.nodeName === "LI") {
+        let elTitle = el.textContent.substring(0, el.textContent.length - 1);
+        elTitle = elTitle.trim()
+        toggleDone(elTitle)
+
+        todoList.innerHTML = renderTaskList(tasks);
+    }
+});
 
 // 4. Stretch goals:
 //    - Display a chekcbox next to each task to represent done/todo 
-//      (checking/unchecking it toggles the state)
+//      (checking/unchecking it toggles the state) x
 //    - Update the UI so that pressing enter in the text input adds 
 //      the task (notice we aren't using a form
 //    - Display a summary line above the list
