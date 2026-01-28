@@ -60,9 +60,9 @@ class ResourceResults extends HTMLElement {
           composed: true,      // if true, events can cross shadow DOM boundary
         }
       );
-      
-        // broadcast the event to the current target (in this case, a ResourceResults component instance)
-        this.dispatchEvent(selectedEvent);
+
+      // broadcast the event to the current target (in this case, a ResourceResults component instance)
+      this.dispatchEvent(selectedEvent);
       
     }
   }
