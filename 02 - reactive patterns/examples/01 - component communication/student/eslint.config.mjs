@@ -12,5 +12,6 @@ export default [
       'camelcase': 'error',
       '@stylistic/semi': ['error', 'always'],
       '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/no-trailing-spaces': null,
     } },
 ];
