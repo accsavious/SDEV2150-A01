@@ -11,7 +11,7 @@ import './components/resource-results.js';
 import './components/resource-details.js';
 
 // Optional stretch:
-import './components/resource-item.js';
+//import './components/resource-item.js';
 
 
 // --------------------------------------------------
