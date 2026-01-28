@@ -1,0 +1,21 @@
+look up event.target.closest
+Observer observed pattern
+Reactive mental model
+Something happens -> event is emitted -> other code reacts -> the UI updates
+
+Events
+are what happened, do not dictate what should happen, all listeners can react
+
+event context: what emitted the event, what its called, what data it carries
+what reacts to it. This can all be accessed
+
+Example event: resource-selected
+emmited by <resource-results>, fired when a result activated, payload includes the selected resource, event bubbles through dom
+
+Shadow DOM - just for styling
+
+Pub-Sub
+publisher subscriber pattern
+
+
+
