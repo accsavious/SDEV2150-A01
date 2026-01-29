@@ -117,8 +117,7 @@ class ResourceFilters extends HTMLElement {
     );
 
     this.dispatchEvent(filtersEvent);
-    console.log(filtersEvent);
-
+    // console.log(filtersEvent);
   }
 
   render() {
