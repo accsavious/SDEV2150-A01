@@ -54,8 +54,15 @@ class ResourceFilters extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    const form = document.querySelector('#frm-filter');
+    form.addEventListener('submit', (event) => {
+      const el = event.target;
+      el.preventDefault();
+      console.log(el);
+    });
   }
 
+  _filterResults() {}
   render() {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }

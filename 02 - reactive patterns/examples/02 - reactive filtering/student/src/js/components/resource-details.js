@@ -31,12 +31,12 @@ class ResourceDetails extends HTMLElement {
 
   set resource(data) {
     this.#resource = data;
-    this.render()
+    this.render();
   }
 
   render() {
-      this.shadowRoot.innerHTML = '';
-      this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.innerHTML = '';
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     if (this.#resource) {
       const detailsContainer = document.createElement('div');
@@ -61,14 +61,11 @@ class ResourceDetails extends HTMLElement {
       `;
 
       this.shadowRoot.querySelector('.card-body').appendChild(detailsContainer);
-
     } else {
-
       this.shadowRoot.querySelector('.card-body').innerHTML = `
         <div class="list-group-item">
           <p class="mb-0">Please select a result to view details.</p>
         </div>`;
-
     }
   }
 }
