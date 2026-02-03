@@ -36,6 +36,21 @@ class ResourceResults extends HTMLElement {
 
   // TODO: Stage 2: Observe the `source` attribute
 
+  // how would I use this pattern for populating data?
+  static get observedAttributes() {
+    // this built-in method determines which component props to monitor
+    return ['some observed component property']
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    // check if some value changed
+    // do stuff if so
+  }
+
+  async #fetchData(url) {
+    // grab data from URL and write to results
+  }
+
   set results(data) {
     this.#results = data;
     this.#filteredResults = [...data];
