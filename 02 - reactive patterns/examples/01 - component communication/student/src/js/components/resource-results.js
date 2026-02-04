@@ -51,18 +51,23 @@ template.innerHTML = `
 
 class ResourceResults extends HTMLElement {
   // TODO: Create a private field for results data
-
+  #results = [];
   constructor() {
     super();
     // TODO: Bind the handleResultClick method to this instance
-
+    this._handleResultClick = this.this._handleResultClick.bind(this)
     this.attachShadow({ mode: 'open' });
   }
 
   // TODO: Implement setter for results data, remember to render
-
+  set results(data) {
+    this.#results = data;
+    this.render();
+  }
   // TODO: Add an event handler method for result selection
-
+  _handleResultClick(event) {
+    const button = event.target.closest('button[data-id]')
+  }
   connectedCallback() {
     // TODO: Add a click event listener to handle result selection
     
