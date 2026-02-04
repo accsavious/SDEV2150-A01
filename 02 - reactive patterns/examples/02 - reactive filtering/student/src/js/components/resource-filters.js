@@ -50,6 +50,7 @@ class ResourceFilters extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   connectedCallback() {
