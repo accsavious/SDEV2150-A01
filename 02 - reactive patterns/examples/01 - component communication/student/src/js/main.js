@@ -53,5 +53,12 @@ const resultData = [
 ];
 
 // TODO: Pass data to resource-results component
+const resultsComponents = document.querySelector('resource-results');
+resultsComponents.results = resultData;
 
 // TODO: Listen for resourceSelected event and update resource-details component
+const detailsComponent = document.querySelector('resource-details');
+resultsComponents.addEventListener('resource-selected', (event) => {
+  console.log(event.detail.result)
+  detailsComponent.resource = event.detail.result;
+})
