@@ -52,9 +52,8 @@ const resultData = [
   },
 ];
 
-
 const resultsComponent = document.querySelector('resource-results');
-resultsComponent.results = resultData;  // passes the data to ResourceResults.results setter, since we made the array itself private
+resultsComponent.results = resultData; // passes the data to ResourceResults.results setter, since we made the array itself private
 
 const detailsComponent = document.querySelector('resource-details');
 resultsComponent.addEventListener('resource-selected', (event) => {

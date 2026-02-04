@@ -31,19 +31,21 @@ class ResourceDetails extends HTMLElement {
   }
 
   // TODO: Implement setter for resource data, remember to render
-  set resouce(data) {
+  set resource(data) {
     this.#resource = data;
-    console.log(this.#resource)
+    console.log("resource called")
+    this.render()
   }
   render() {
     // TODO: Render resource details if available
     this.shadowRoot.innerHTML = '';
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
     if (this.#resource) {
       const detailsContainer = document.createElement('div');
 
       detailsContainer.innerHTML = `
-        <h2 class="h5">Peer Tutoring Centre</h2>
+        <h2 class="h5">${this.#resource.title}</h2>
         <p class="text-body-secondary mb-2">${this.#resource.summary}</p>
 
         <dl class="row mb-0">

@@ -31,7 +31,7 @@ class ResourceResults extends HTMLElement {
   }
   // TODO: Add an event handler method for result selection
   _handleResultClick(event) {
-    const el = event.target;
+
     
     const button = event.target.closest('button[data-id]')
     if (button) {
