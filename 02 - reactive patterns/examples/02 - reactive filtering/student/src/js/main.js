@@ -59,3 +59,10 @@ const detailsComponent = document.querySelector('resource-details');
 resultsComponent.addEventListener('resource-selected', (event) => {
   detailsComponent.resource = event.detail.result;
 });
+
+const filtersComponent = document.querySelector('resource-filters');
+filtersComponent.addEventListener('resource-filters-changed', (event) => {
+  resultsComponent.filters = event.detail;
+  const detailsComponent = document.querySelector('resource-details');
+  detailsComponent.resource = null;
+});

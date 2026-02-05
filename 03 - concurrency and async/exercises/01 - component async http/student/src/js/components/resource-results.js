@@ -46,7 +46,7 @@ class ResourceResults extends HTMLElement {
     this.#filters = {
       ...this.#filters,
       ...filters,
-    };
+    },
     this.#applyFilters();
   }
 
@@ -60,12 +60,14 @@ class ResourceResults extends HTMLElement {
   // - handle loading and error states
   // - set results with fetched data
 
-  observedAttribute() {
-
+  static get observedAttribute() {
+    return ['source'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    
+    if (name === 'source') {
+      console.log(newValue);
+    }
   }
 
   _handleResultClick(event) {

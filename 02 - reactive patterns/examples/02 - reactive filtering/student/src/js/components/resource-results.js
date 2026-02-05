@@ -8,7 +8,7 @@ template.innerHTML = `
         <span class="badge text-bg-secondary">4</span>
       </div>
 
-      <div class="list-group list-group-flush">
+      <div class="list-group list-group-flush d-flex flex-column flex-fill">
 
         <!-- results will be injected here, by selecting for .list-group and embedding inner HTML -->
 
@@ -18,15 +18,47 @@ template.innerHTML = `
 
 class ResourceResults extends HTMLElement {
   #results = [];
+  #filteredResults = [];
+  #filters = {
+    searchQuery: '',
+    category: 'all',
+    openNow: false,
+    virtual: false,
+  };
 
   constructor() {
     super();
-    this._handleResultClick = this._handleResultClick.bind(this);
     this.attachShadow({ mode: 'open' });
+
+    this._handleResultClick = this._handleResultClick.bind(this);
   }
 
   set results(data) {
     this.#results = data;
+    this.#filteredResults = [...data];
+    this.render();
+  }
+
+  set filters(filters) {
+    this.#filters = filters;
+    this.#applyFilters();
+  }
+
+  #applyFilters() {
+    const { searchQuery, category, openNow, virtual } = this.#filters;
+    const q = searchQuery.trim().toLowerCase();
+    this.#filteredResults = this.#results.filter(
+      (item) => {
+        const matchesSearchQuery = !q || [item.title, item.summary, item.location].join('').toLowerCase().includes(q);
+
+        const matchesCategory = !category || category === 'all' || item.category.toLowerCase() === category.toLowerCase();
+
+        const matchesOpenNow = !openNow || item.openNow;
+
+        const matchesVirtual = !virtual || item.virtual;
+
+        return matchesSearchQuery && matchesCategory && matchesOpenNow && matchesVirtual;
+      });
     this.render();
   }
 
@@ -65,10 +97,10 @@ class ResourceResults extends HTMLElement {
     const content = template.content.cloneNode(true);
     const listGroup = content.querySelector('.list-group');
 
-    if (this.#results.length) {
-      const resultsHTML = this.#results.map(
+    if (this.#filteredResults.length) {
+      const resultsHTML = this.#filteredResults.map(
         result => `
-        <button type="button" class="list-group-item list-group-item-action" data-id="${result.id}">
+        <button type="button" class="list-group-item list-group-item-action flex-fill" data-id="${result.id}">
           <div class="d-flex w-100 justify-content-between">
             <h2 class="h6 mb-1">${result.title}</h2>
             <small>${result.category}</small>
