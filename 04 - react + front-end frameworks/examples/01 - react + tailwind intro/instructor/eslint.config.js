@@ -3,6 +3,8 @@ import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite'; 
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -27,5 +29,10 @@ export default defineConfig([
       // add a linting rule to 'always' yell at me if I miss semicolons where they """should""" be
       semi: ['error', 'always'],
     },
+      plugins: [
+    react(),
+    // TODO: add the tailwindcss plugin
+    tailwindcss(),
+    ],
   },
 ]);

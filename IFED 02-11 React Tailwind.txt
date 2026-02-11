@@ -1,0 +1,3 @@
+In react, you will see patterns like
+
+{condition && <Thing />}
