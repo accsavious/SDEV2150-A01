@@ -27,7 +27,29 @@ export default function Results() {
                   summary={r.summary}
                   location={r.location}
                 >
-                  {/* I'm not going to self-terminate this component, because I'll be adding an example of component children */}
+                  {/*
+                    children: A reserved keyword / automatically passed property (setting values to this will override it!)
+                              for any nodes nested inside the current component. Nested stuff could be components, or even just HTML.
+                              In this example, we have:
+                    
+                              <ResultsItem prop1=someValue prop2=someValue ...>
+                                {someConditionalRendering}
+                              </ResultsItem>
+
+                              In this case, the result of {someConditionalRendering} is what's passed to ResultsItem as a prop named 'children' —
+                              because that's what's nested *inside* ResultsItem. Again, this is automatic: if there was nothing inline, or the component was
+                              self-terminating (i.e. <ResultsItem prop1=someValue ... />), the children prop would just hold null.
+                  */}
+                  {
+                    // You've seen the OR || operator — thisIfTruthy || otherwiseThis
+                    // Here, we're using the AND && operator — ifTruthy && thenDoThis
+                    //   -> if the data element's .openNow is true, then render a cute lil' badge
+                    r.openNow && (                    
+                      <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-800">
+                        Open now
+                      </span> 
+                    )
+                  }
                 </ResultsItem>
               )
             )
