@@ -1,0 +1,19 @@
+-REACT INTRO
+React components: a function that returns markup
+
+Props - a value you pass to a function
+State - how we track status in a component
+
+We will go from
+web component to react components
+HTML templating to JSX
+using tailwind
+
+React works with component libraries
+Why vite
+fast, modern
+JSX
+Looks like html
+
+we arent doing yet:
+internal state, side effects, minimal prop usage

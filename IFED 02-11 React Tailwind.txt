@@ -1,0 +1,7 @@
+In react, you will see patterns like
+
+{condition && // if this condition is true
+(
+	HTML MARKUP
+)
+}

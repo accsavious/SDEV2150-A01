@@ -1,0 +1,15 @@
+We installed pnpm
+To get pnpm:
+using powershell
+Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expression
+
+Run dev is for development side
+
+Run start is for production side, launched for consumer use
+
+How to do for loops
+
+for... in returns keys
+for... of returns values
+for... in -> would yield indexical positions
+for... of -> would vield values of each element
