@@ -1,0 +1,6 @@
+Accessing stuff inside slot
+slot[name="main"]
+Doesnt access the stuff inside the shadow dom
+
+[slot="main"]
+Does access the stuff inside the shadow dom
