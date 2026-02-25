@@ -1,11 +1,7 @@
 // src/components/Results.jsx
-
-// components
-import Card from './ui/Card';
 import ResultsItem from './ResultsItem';
-
-// data
 import { resources } from '../data/resources';
+import Card from './ui/Card';
 
 export default function Results() {
   return (
@@ -28,6 +24,6 @@ export default function Results() {
           </ResultsItem>
         ))}
       </ul>
-    </Card>
+    </Card >
   );
 }

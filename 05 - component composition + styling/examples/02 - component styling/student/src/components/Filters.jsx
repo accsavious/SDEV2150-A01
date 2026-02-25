@@ -1,6 +1,6 @@
-// src/components/Filters.jsx
 import Card from './ui/Card';
 
+// src/components/Filters.jsx
 export default function Filters() {
   return (
     <Card title="Filters">
@@ -75,6 +75,6 @@ export default function Filters() {
           </div>
         </form>
       </div>
-    </Card>
+    </Card >
   );
 }
