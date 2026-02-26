@@ -46,17 +46,29 @@ class ResourceResults extends HTMLElement {
     this.#filters = {
       ...this.#filters,
       ...filters,
-    };
+    },
     this.#applyFilters();
   }
 
   // TODO: Stage 2: Private method to fetch data from the provided source URL
-
+  // 1. static get observedAttribute()
+  // 2. observerAttributeCallback
+  // 3. make a function to fetch the data
   // TODO: Stage 2: When `source` changes:
   // - Avoid refetching if the value is unchanged
   // - fetch(source)
   // - handle loading and error states
   // - set results with fetched data
+
+  static get observedAttribute() {
+    return ['source'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'source') {
+      console.log(newValue);
+    }
+  }
 
   _handleResultClick(event) {
     const button = event.target.closest('button[data-id]');

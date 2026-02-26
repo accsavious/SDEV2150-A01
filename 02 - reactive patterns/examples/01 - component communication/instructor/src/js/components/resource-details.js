@@ -37,13 +37,13 @@ class ResourceDetails extends HTMLElement {
   // TODO: Implement setter for resource data, remember to render
   set resource(data) {
     this.#resource = data;
-    this.render()
+    this.render();
   }
 
   render() {
     // TODO: Render resource details if available
-      this.shadowRoot.innerHTML = '';  // clear container before rendering so we don't double up its contents
-      this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.innerHTML = ''; // clear container before rendering so we don't double up its contents
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     if (this.#resource) {
       // render out content if data exists
@@ -69,15 +69,12 @@ class ResourceDetails extends HTMLElement {
       `;
 
       this.shadowRoot.querySelector('.card-body').appendChild(detailsContainer);
-
     } else {
-
       // show default content otherwise
       this.shadowRoot.querySelector('.card-body').innerHTML = `
         <div class="list-group-item">
           <p class="mb-0">Please select a result to view details.</p>
         </div>`;
-
     }
   }
 }
