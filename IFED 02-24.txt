@@ -1,3 +1,16 @@
+Passing children:
+export default function componentName({attribute, children}) {
+	<div>{attribute}</div>
+	<div>{children}</div>
+}
+This allows us to place dom children of this element into the specified spot inside
+this component like so:
+<componentName attribute="value"><p>hi</p></componentName>
+is the same as
+	<div>value</div>
+	<div><p>hi</p></div>
+
+
 Accessing stuff inside slot
 slot[name="main"]
 Doesnt access the stuff inside the shadow dom
