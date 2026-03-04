@@ -7,7 +7,7 @@ import PageLayout from './components/layout/PageLayout';
 function App() {
   return (
     <PageLayout header={<Header tagline="Find the right resources, right away" />}>
-      <aside className='md:col-span-3'>
+      <aside className='md:col-span-3 '>
         <Filters />
       </aside>
       <aside className='md:col-span-3'>
