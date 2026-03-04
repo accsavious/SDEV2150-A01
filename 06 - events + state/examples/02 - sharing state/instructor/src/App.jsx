@@ -5,6 +5,12 @@ import Details from './components/Details';
 import PageLayout from './components/layout/PageLayout';
 
 function App() {
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [openNowOnly, setOpenNowOnly] = useState(false);
+  const [selectedResource, setSelectedResource] = useState(null);
+
   return (
     <PageLayout header={<Header tagline="Find the right resources, right away" />}>
       <aside className="md:col-span-3 lg:col-span-1">

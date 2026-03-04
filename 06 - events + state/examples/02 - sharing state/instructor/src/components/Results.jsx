@@ -5,9 +5,6 @@ import { resources } from '../data/resources';
 import Card from './ui/Card';
 
 export default function Results() {
-  // NOTE: basic state has been implemented in Results;
-  //       we're just using it to show which resource is selected
-  const [selectedResource, setSelectedResource] = useState(null);
 
   return (
     <Card title="Results">
