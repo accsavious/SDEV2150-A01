@@ -2,9 +2,6 @@ import { useState } from 'react';
 import Card from './ui/Card';
 
 export default function Filters() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [openNowOnly, setOpenNowOnly] = useState(false);
 
   function toggleCategory(category) {
     setSelectedCategories((prev) => {

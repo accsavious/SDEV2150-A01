@@ -5,7 +5,6 @@ import { resources } from '../data/resources';
 import Card from './ui/Card';
 
 export default function Results() {
-  const [selectedResource, setSelectedResource] = useState(null);
 
   return (
     <Card title="Results">
