@@ -1,35 +1,7 @@
-import { useState } from 'react';
-
-// ui
 import Card from './ui/Card';
 
 // src/components/Filters.jsx
 export default function Filters() {
-
-  const [searchText, setSearchText] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
-  function toggleCategory(category) {
-    // we're going to do some slightly complex logic in our setter function
-    // to 'simulate' toggling each category
-    setSelectedCategories(
-      (existing) => {
-        // if our existing selected terms already includes whatever just got clicked,
-        // that means we're *deselecting* it,
-        if (existing.includes(category)) {
-          // so filter it out of the existing terms (and update the array)
-          return existing.filter(
-            (cat) => cat !== category
-          );
-        }
-
-        // otherwise, (it wasn't selected and now we're selecting it)
-        // so just add it to the array of selected categories
-        return [...existing, category]
-      }
-    )
-  }
-
   return (
     <Card title="Filters">
       <div className="space-y-4 p-4">
@@ -40,13 +12,10 @@ export default function Filters() {
             </label>
             <input
               id="q"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
               type="text"
               placeholder="Try: tutoring, mental health, bursary"
               className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
             />
-            Search term is: {searchText}
           </div>
 
           <hr className="border-gray-200" />
@@ -58,8 +27,7 @@ export default function Filters() {
                 <button
                   key={label}
                   type="button"
-                  className={`${selectedCategories.includes(label) && 'bg-sky-600 text-white'} rounded border border-sky-600 px-3 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-50`}
-                  onClick={() => toggleCategory(label)}
+                  className="rounded border border-sky-600 px-3 py-1 text-xs font-semibold text-sky-700 hover:bg-sky-50"
                 >
                   {label}
                 </button>
