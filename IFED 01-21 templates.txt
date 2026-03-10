@@ -1,0 +1,18 @@
+connectedCallback() invoked when this element is added to the dom
+render or initialise logic
+
+disconnectedCallback() invoked when custom element is disconnected
+
+adoptedCallback() invoked when a custom element is moved to a new document
+
+attributeChangedCallback() invoked when one of the custome elements attributes is
+added, removed or changed
+
+I forgot to add some files to a commit, but already committed and pushed
+how to deal with it
+
+1. add the new files via git add
+2. git commit --amend to 'revise' the commit (this will give it a new commit hash, though)
+
+3. providing no one else has pulled/rebased on that commit, I can git push -f to
+force-push the change and replace the commit on the remote

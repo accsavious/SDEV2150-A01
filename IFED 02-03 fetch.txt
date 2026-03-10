@@ -1,0 +1,30 @@
+
+fetch(url) - the request
+
+Promise
+a value that will exist later
+one of three states:
+pending
+fulfilled
+rejected
+
+handling steps in order
+Fetch(url)
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(err => console.error(err));
+
+.then waits for the previous attached block to finish
+
+
+if you are awaiting in a function
+
+async function() { await something} 
+
+For readability
+try {
+	const res = await fetch(url);
+	const data = await res.json();
+} catch.error(err) {
+	console.log(err)
+}

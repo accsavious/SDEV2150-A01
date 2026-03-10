@@ -1,0 +1,24 @@
+Async functionality
+Async code allows delays in code to function without disrupting code.
+JS does no block
+Long operations  move off the call stack, results come back later
+Code reacts after results arrive
+-A promise
+pending, fulfilled, rejected
+
+Coordinating multiple async tasks
+
+const [a, b] = await Promise.all([
+	fetch(urlA),
+	fetch(urlB),
+]);
+const response = await fetch(url);
+const data await response.json();
+
+History:
+Ajax - asynchronous Javascript and XML
+
+JQuery
+Terse javascript that made js easy. Its obsolete
+
+Node expanded what js could do from client side only to other options

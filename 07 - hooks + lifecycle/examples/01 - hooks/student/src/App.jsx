@@ -5,12 +5,14 @@ import Filters from './components/Filters';
 import Results from './components/Results';
 import Details from './components/Details';
 import PageLayout from './components/layout/PageLayout';
+import useSelectedResource from './hooks/useSelectedResource';
+
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [openNowOnly, setOpenNowOnly] = useState(false);
-  const [selectedResource, setSelectedResource] = useState(null);
+  const [selectedResource, setSelectedResource] = useSelectedResource(null);
   const [virtualOnly, setVirtualOnly] = useState(false);
 
   return (

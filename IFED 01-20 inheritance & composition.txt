@@ -1,0 +1,12 @@
+Classes can be created, inheriting from another existing class
+
+inheritance
+a class that inherits from another class gets all qualities from the parent class
+tight coupled, shared via parent class
+used when types are logically the same
+
+Composition
+When you nest a class inside another
+A video class has a likeButton class 
+loose coupled, shared via instance usage
+used when one object needs another's behavior

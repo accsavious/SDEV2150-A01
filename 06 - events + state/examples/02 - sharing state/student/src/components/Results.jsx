@@ -4,8 +4,12 @@ import ResultsItem from './ResultsItem';
 import { resources } from '../data/resources';
 import Card from './ui/Card';
 
-export default function Results() {
-  const [selectedResource, setSelectedResource] = useState(null);
+export default function Results({
+  selectedResource, onSelectResource,
+  searchTerm, selectedCategories,
+  openNowOnly,
+}) {
+
 
   return (
     <Card title="Results">
@@ -17,7 +21,7 @@ export default function Results() {
             category={r.category}
             summary={r.summary}
             location={r.location}
-            onClick={() => setSelectedResource(r)}
+            onClick={() => onSelectResource(r)}
             selected={selectedResource?.id === r.id}
           >
             {/* children: optional badge content */}

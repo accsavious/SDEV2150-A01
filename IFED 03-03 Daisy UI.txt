@@ -1,0 +1,16 @@
+State:
+stored information describing the "state" of things in the program
+
+const [value, setValue ] = useState("default value )
+is an abstraction of
+
+class myClass() {
+	#value = null;
+	set value(x) {
+		this.#value = x;
+		this.render()
+	}
+	render() {
+		return "${this.#value}"
+	}
+}

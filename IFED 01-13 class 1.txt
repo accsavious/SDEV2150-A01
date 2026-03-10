@@ -1,0 +1,7 @@
+Its Oliver!
+
+Topic of this course: React, JS frameworks
+
+Review
+Dom is a tree structure, js reads and modifies it.
+UI changes reflect data changes

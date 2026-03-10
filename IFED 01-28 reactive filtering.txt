@@ -1,0 +1,6 @@
+users change filters
+results must update
+selection must work
+
+Filters describe what a user wants
+results are product of filter
