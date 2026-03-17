@@ -1,6 +1,12 @@
+// react hooks
 import { useState } from 'react';
-import { useSelectedResource } from './hooks/useSelectedResource';
 
+// our own hooks
+import { useSelectedResource } from './hooks/useSelectedResource';
+import { useResources } from './hooks/useResources';
+
+
+// our own components
 import Header from './components/Header';
 import Filters from './components/Filters';
 import Results from './components/Results';
@@ -8,11 +14,18 @@ import Details from './components/Details';
 import PageLayout from './components/layout/PageLayout';
 
 function App() {
+
+  // our fetch hook
+  const { resources, isLoading, error, refetch } = useResources();
+
+  // our state
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [openNowOnly, setOpenNowOnly] = useState(false);
+
   // const [selectedResource, setSelectedResource] = useState(null);
   const [selectedResource, setSelectedResource] = useSelectedResource();
+
   const [virtualOnly, setVirtualOnly] = useState(false);
 
   return (
@@ -31,6 +44,7 @@ function App() {
       </aside>
       <section className="md:col-span-2 lg:col-span-1">
         <Results
+          resources={resources}
           selectedResource={selectedResource}
           onSelectResource={setSelectedResource}
           searchTerm={searchTerm}
