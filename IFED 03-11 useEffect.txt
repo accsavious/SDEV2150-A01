@@ -1,0 +1,16 @@
+useEffect: how it works
+useEffect( ()=> {
+	logic	// fires on component mount, and when effect re-fires
+	return () => {
+	cleanup/teardown logic
+	Fires when component unmounts, or on re-render with old prop state
+}
+},
+[] Dependency array:
+if empty, this fires on page load.
+If absent, fires each time the component loads.
+If variable tracked, fires when the variable is 
+)
+
+
+You shouldn't have no dependency array

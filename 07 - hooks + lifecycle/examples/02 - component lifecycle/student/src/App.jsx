@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSelectedResource } from './hooks/useSelectedResource';
 
+import { useSelectedResource } from './hooks/useSelectedResource';
+
 import Header from './components/Header';
 import Filters from './components/Filters';
 import Results from './components/Results';
