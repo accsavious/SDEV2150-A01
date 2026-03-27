@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useNavigate, useParams } from 'react-router';
 import { useResources } from '../hooks/useResources';
 import Card from '../components/ui/Card';
 
@@ -16,6 +17,9 @@ export default function AdminPage() {
   });
 
   const { resources, addResource, isLoading, error, refetch } = useResources();
+
+
+  const { resourceId } = useParams(); 
 
   async function handleCreateResource(e) {
     e.preventDefault();
