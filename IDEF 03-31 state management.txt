@@ -1,0 +1,3 @@
+to modify a dictionary
+
+{obj..., this : "that"}

@@ -43,6 +43,28 @@
       "contact": "it@nait.ca",
       "virtual": false,
       "openNow": true
+    },
+    {
+      "id": "res_1774984558601_txgwbf",
+      "title": "asdfasdfasdf",
+      "category": "",
+      "summary": "",
+      "location": "Mars",
+      "hours": "9:00 - 10:00",
+      "contact": "test@test.com",
+      "virtual": false,
+      "openNow": false
+    },
+    {
+      "id": "res_1774984582845_lrhrv9",
+      "title": "Potato",
+      "category": "Financial",
+      "summary": "",
+      "location": "Backyard",
+      "hours": "9:00 - 10:00",
+      "contact": "test@test.com",
+      "virtual": false,
+      "openNow": false
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useNavigate, useParams } from 'react-router';
 import { useResources } from '../hooks/useResources';
@@ -18,8 +18,34 @@ export default function AdminPage() {
 
   const { resources, addResource, isLoading, error, refetch } = useResources();
 
-
   const { resourceId } = useParams(); 
+
+  const resetForm = () => {
+    setFormData({
+      title: "",
+      category: "",
+      summary: "",
+      location: "",      
+      hours : "",
+      contact : "",
+      virtual : false,
+      openNow : false,
+
+    });
+  };
+  
+  useEffect(
+    () => {
+      if(!resourceId) {
+        resetForm();
+      }
+      
+      const resource = resources.find((item) => item.id === resourceId);
+      if (!resource) return;
+      setFormData(resource);
+    }, [resourceId, resources]
+  );
+  
 
   async function handleCreateResource(e) {
     e.preventDefault();
@@ -114,7 +140,8 @@ export default function AdminPage() {
           <div className="card-body">
             <ul className="space-y-2">
               {resources.map((resource) => (
-                <li key={resource.id} className="rounded border border-gray-200 p-3 ">
+                <li key={resource.id} className="rounded border border-gray-200 p-3 "
+                >
                   <p className="font-semibold">{resource.title}</p>
                   <p className="text-sm text-base-content/70">{resource.category}</p>
                 </li>
