@@ -43,6 +43,17 @@
       "contact": "it@nait.ca",
       "virtual": false,
       "openNow": true
+    },
+    {
+      "id": "res_1775013156642_ltb81s",
+      "title": "Potato",
+      "category": "",
+      "summary": "",
+      "location": "",
+      "hours": "",
+      "contact": "",
+      "virtual": false,
+      "openNow": false
     }
   ]
 }
