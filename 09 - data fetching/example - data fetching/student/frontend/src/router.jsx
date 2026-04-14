@@ -94,16 +94,19 @@ export async function adminAction({ request, params }) {
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    Component: App,
+    // element: <App/>,
     children: [
       {
         index: true,
-        element: <ResourceDirectoryPage />,
+        // element: <ResourceDirectoryPage />,
+        Component: ResourceDirectoryPage,
         loader: resourceDirectoryLoader,
       },
       {
         path: 'admin',
-        element: <AdminPage />,
+        // element: <AdminPage />,
+        Component: AdminPage,
         loader: adminLoader,
         action: adminAction,
       },
