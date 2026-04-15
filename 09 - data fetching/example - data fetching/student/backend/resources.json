@@ -47,6 +47,17 @@
     {
       "id": "res_1775013156642_ltb81s",
       "title": "Potato",
+      "category": "Tech",
+      "summary": "",
+      "location": "",
+      "hours": "",
+      "contact": "",
+      "virtual": false,
+      "openNow": false
+    },
+    {
+      "id": "res_1775594060849_3tcrzf",
+      "title": "Sandwich",
       "category": "",
       "summary": "",
       "location": "",

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { NavLink, useNavigate, useParams } from 'react-router';
 
 import { Form, useLoaderData, useNavigation } from 'react-router';
 import Card from '../components/ui/Card';
@@ -48,9 +48,6 @@ export default function AdminPage() {
     openNow: currentResource.openNow,
   } : EMPTY_FORM_DATA;
 
-  function handleEditStart(resource) {
-    navigate(`/admin/${resource.id}`);
-  }
 
   async function handleCreateResource(e, formData) {
     e.preventDefault();
@@ -120,10 +117,22 @@ export default function AdminPage() {
               {resources.map((resource) => (
                 <li
                   key={resource.id}
-                  className="rounded border border-gray-200 p-3 cursor-pointer hover:border-sky-400"
-                  onClick={() => handleEditStart(resource)}>
+                  >
+                  <NavLink 
+                    to={`/admin/${resource.id}`}
+                    className={({ isActive }) => 
+                      `block rounded border p-3 
+                      ${isActive ? 
+                          'border-sky-500 bg-sky-50' 
+                        : 
+                          'border-gray-200'
+                      }
+                      `
+                    }
+                  >
                   <p className="font-semibold">{resource.title}</p>
                   <p className="text-sm text-base-content/70">{resource.category}</p>
+                  </NavLink>
                 </li>
               ))}
             </ul>
