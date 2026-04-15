@@ -1,6 +1,6 @@
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 
-import { useResources } from '../hooks/useResources';
+import { Form, useLoaderData, useNavigation } from 'react-router';
 import Card from '../components/ui/Card';
 import ResourceForm from '../components/ResourceForm';
 
@@ -18,11 +18,11 @@ const EMPTY_FORM_DATA = {
 };
 
 export default function AdminPage() {
-  const { resourceId } = useParams();
+
   const navigate = useNavigate();
-
-  const { resources, isLoading, error, refetch } = useResources();
-
+  const navigation = useNavigation();
+  const { resources, selectedResource, resourceId} = useLoaderData();
+  const isSubmitting = navigation.state === 'submitting';
   // We no longer require a useEffect to track the current resource. Instead, we 
   // can derive it directly from the URL param and the list of resources. If the 
   // resourceId param is present, we find the corresponding resource from the list.
@@ -93,28 +93,11 @@ export default function AdminPage() {
         </p>
       </div>
 
-      {isLoading && <p>Loading resources...</p>}
-
-      {error && (
-        <div className="alert alert-error">
-          <span>{error.message}</span>
-          <button className="btn btn-sm" onClick={refetch}>Try again</button>
-        </div>
-      )}
-
       <section className="md:col-span-3 lg:col-span-3">
         <Card title="Resource Form">
           <div className="card-body">
-            {resourceId && isLoading && <p>Loading selected resource...</p>}
-
-            {resourceId && !isLoading && !currentResource && (
-              <p className="text-sm text-red-600">
-                Selected resource could not be found.
-              </p>
-            )}
-
             {/* Update to make use of the ResourceForm component */}
-            {(!resourceId || currentResource) && (
+            {!resourceId || currentResource ? (
               <ResourceForm
                 key={resourceId ?? 'new'}
                 initialData={initialFormData}
@@ -122,7 +105,10 @@ export default function AdminPage() {
                 onSubmit={handleCreateResource}
                 onReset={() => navigate('/admin')}
               />
-            )}
+            ) 
+            : 
+            (<div>Resources not loaded</div>)
+            }
           </div>
         </Card>
       </section>
